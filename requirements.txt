@@ -1,0 +1,16 @@
+# ── Core runtime dependencies ─────────────────────────────────────────────────
+# Cryptographic primitives (AES-256-GCM, PBKDF2)
+cryptography>=42.0.0
+
+# Qt6 GUI framework
+PyQt6>=6.6.0
+
+# ── Optional dependencies (QR code scanning) ─────────────────────────────────
+# Uncomment to enable webcam / image-file QR scanning:
+# opencv-python>=4.9.0
+# pyzbar>=0.1.9
+
+# ── Development / testing only ────────────────────────────────────────────────
+# pytest>=8.0.0
+# pytest-qt>=4.3.0
+# coverage>=7.4.0
