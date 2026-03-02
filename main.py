@@ -1,5 +1,5 @@
 """
-Authify – entry point.
+Authify - entry point.
 
 Usage
 -----
@@ -41,7 +41,7 @@ def _build_encryptor(db: AccountDatabase, password: str) -> FieldEncryptor:
     """Derive or create the master key for the database."""
     salt = db.get_salt()
     if salt is None:
-        # First run – generate and store a new salt
+        # First run - generate and store a new salt
         salt = generate_salt()
         db.set_salt(salt)
     key = derive_key(password, salt)
@@ -64,12 +64,12 @@ def _unlock(db: AccountDatabase, app: QApplication) -> bool:
         encryptor = _build_encryptor(db, dlg.password)
 
         if is_new:
-            # First run – accept any password (just set up the encryptor)
+            # First run - accept any password (just set up the encryptor)
             db.set_encryptor(encryptor)
             logger.info("Vault initialised with new master password.")
             return True
         else:
-            # Existing vault – verify by attempting to decrypt one record
+            # Existing vault - verify by attempting to decrypt one record
             try:
                 db.set_encryptor(encryptor)
                 db.list_accounts()   # will raise InvalidTag on wrong password
@@ -106,7 +106,7 @@ def main() -> None:
     db = AccountDatabase()
 
     if not _unlock(db, app):
-        logger.info("Unlock cancelled or failed – exiting.")
+        logger.info("Unlock cancelled or failed - exiting.")
         sys.exit(0)
 
     window = MainWindow(db)
